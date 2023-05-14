@@ -8,3 +8,4 @@ django-ckeditor==6.5.1
 gunicorn==20.1.0
 django-on-heroku==1.1.2
 python-decouple==3.8
+whitenoise==6.4.0
