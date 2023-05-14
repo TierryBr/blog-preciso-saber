@@ -1,0 +1,1 @@
+web: gunicorn blog_preciso_saber.wsgi --log-file -
