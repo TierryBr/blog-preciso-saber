@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <!-- NOTICIA INTERNA -->
+  <div class="col-md-8">
+    <article class="blog-post">
+      <h2 class="blog-post-title" style="margin-top: 40px">{{ post.title }}</h2>
+      <p class="blog-post-meta">{{ post.created_at|date:'d, M Y' }} by <a href="#" class="blog-post-author">{{ post.author }}</a></p>
+
+      {{ post.content|safe }}      
+    </article>
+  </div>
+{% endblock %}
+
+{% block popular %}
+  <div class="p-4">
+    <h4 class="border-bottom pb-2 mb-4">Popular</h4>
+    {% for popular in populares %}
+      <div class="col-md-10 border-bottom pb-2 mb-2">
+        <div class="col-auto d-none d-lg-block">
+          <a href="/posts/{{ popular.post.pk }}">
+            <img src="{{ popular.post.cover }}" class="rounded float-start mb-1" width="300" height="40%" alt="{{ popular.post.title }}">
+          </a>
+          <p class="category-name mb-auto mt-1">{{ popular.post.category }}</p>
+          <h4 class="mb-1 text-primary">
+            <a href="/posts/{{ popular.post.pk }}">{{ popular.post.title }}</a>
+          </h4>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

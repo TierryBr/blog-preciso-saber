@@ -1,0 +1,182 @@
+{% extends 'layout.html' %}
+
+{% block sub_header %}
+  <!-- <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">Titulo da postagem em destaque</h1>
+      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue lendo...</a></p>
+    </div>
+  </div> -->
+{% if banners.0.post.title %}
+  <div id="carouselExampleDark" class="carousel carousel-light slide p-4 p-md-5 mb-4 mt-4 text-white rounded" data-bs-ride="carousel" style="background-color: #101010;">
+    <div class="carousel-indicators">
+        {% if banners.0.post.title %}
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        {% endif %}
+        {% if banners.1.post.title %}
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        {% endif %}
+        {% if banners.2.post.title %}
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        {% endif %}
+    </div>
+    <div class="carousel-inner mb-4" style="padding-left: 10%;">
+        {% if banners.0.post.title %}
+            <div class="carousel-item active" data-bs-interval="10000" >
+                <div class="col-md-6 px-0">
+                  <h1 class="display-4 fst-italic">{{ banners.0.post.title }}</h1>
+                  <p class="lead my-3">{{ banners.0.post.summary|safe }}</p>
+                 <p class="lead mb-0"><a href="/posts/{{ banners.0.post.pk }}" class="text-white fw-bold">Continue lendo...</a></p>
+                </div>
+            </div>
+        {% endif %}
+        {% if banners.1.post.title %}
+          <div class="carousel-item" data-bs-interval="10000" >
+            <div class="col-md-6 px-0">
+              <h1 class="display-4 fst-italic">{{ banners.1.post.title }}</h1>
+              <p class="lead my-3">{{ banners.1.post.summary|safe }}</p>
+             <p class="lead mb-0"><a href="/posts/{{ banners.1.post.pk }}" class="text-white fw-bold">Continue lendo...</a></p>
+            </div>
+          </div>
+        {% endif %}
+        {% if banners.2.post.title %}
+          <div class="carousel-item" data-bs-interval="10000" >
+            <div class="col-md-6 px-0">
+              <h1 class="display-4 fst-italic">{{ banners.2.post.title }}</h1>
+              <p class="lead my-3">{{ banners.2.post.summary|safe }}</p>
+             <p class="lead mb-0"><a href="/posts/{{ banners.2.post.pk }}" class="text-white fw-bold">Continue lendo...</a></p>
+            </div>
+          </div>
+        {% endif %}
+     
+    </div>
+  {% endif %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Design</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+{% endblock %}
+
+{% block content %}
+  <div class="col-md-8">
+    <h3 class="pb-4 mb-4 mt-4 border-bottom">
+       {{ page|safe }}
+    </h3>
+    
+    {% for post in posts %}
+      <article class="blog-post align-content-start d-flex flex-column border-bottom mb-4">
+          <a href="/posts/{{ post.pk }}">
+            <img src="{{ post.cover }}" class="rounded float-start" width="100%" height="50%" alt="{{ post.title }}">
+          </a>
+          <span class="category-name mb-auto mt-2">{{ post.category }}</span>
+          <h2 class="blog-post-title">
+            <a href="/posts/{{ post.pk }}">{{ post.title }}</a>
+          </h2>
+          {{ post.summary|safe }}  
+          <p class="blog-post-meta">
+            por
+            <a href="#" class="blog-post-author">{{ post.author }}</a>
+            | {{ post.created_at|date:'d, M Y' }} 
+          </p>
+          
+      </article>
+    {% endfor %}
+
+  </div>
+{% endblock %}
+
+
+{% block popular %}
+  <div class="p-4">
+    <h4 class="border-bottom pb-2 mb-4">Popular</h4>
+    {% for popular in populares %}
+      <div class="col-md-10 border-bottom pb-2 mb-2">
+        <div class="col-auto d-none d-lg-block">
+          <a href="/posts/{{ popular.post.pk }}">
+            <img src="{{ popular.post.cover }}" class="rounded float-start mb-1" width="300" height="150" alt="{{ popular.post.title }}">
+          </a>
+          <p class="category-name mb-auto mt-1">{{ popular.post.category }}</p>
+          <h4 class="mb-1 text-primary">
+            <a href="/posts/{{ popular.post.pk }}">{{ popular.post.title }}</a>
+          </h4>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+
+{% block pagination %}
+<nav aria-label="Page navigation example" class="col-md-8">
+  <ul class="pagination">
+    {% if posts.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1">&laquo Inicio</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ posts.previous_page_number }}">Anterior</a>
+      </li>
+    {% endif %}
+
+
+    <li class="page-item">
+      <a class="page-link active" href="?page={{ nextpage1 }}">{{ nextpage1 }}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ nextpage2 }}">{{ nextpage2 }}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ nextpage3 }}">{{ nextpage3 }}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ nextpage4 }}">{{ nextpage4 }}</a>
+    </li>
+
+    {% if posts.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ posts.next_page_number }}">Próxima</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}
+
