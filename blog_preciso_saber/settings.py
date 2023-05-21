@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-mx)u6mci8c%wo5%xbmjr0htw#hwhu&6h+900*&ew&vef)4^xys
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = ['precisosaber.com.br']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -82,12 +82,7 @@ WSGI_APPLICATION = 'blog_preciso_saber.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {}
 
 
 # Password validation
