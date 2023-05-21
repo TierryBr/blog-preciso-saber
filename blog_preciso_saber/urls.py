@@ -28,4 +28,6 @@ urlpatterns = [
     path('search/', views.homeSearch, name='search'),
     path('posts/<int:post_id>', views.post),
     path('category/<int:category_id>', views.homeCategory),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
